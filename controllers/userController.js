@@ -6,8 +6,11 @@ module.exports.loginForm = (req, res) => {
 
 module.exports.login = (req, res) => {
     req.flash("success", "Welcome to Wanderlust");
-    let redirectUrl = res.locals.redirectUrl.split('/').slice(0, 3).join('/') || "/";
-    res.redirect(redirectUrl);
+    if(res.locals.redirectUrl != undefined){
+        let redirectUrl = res.locals.redirectUrl.split('/').slice(0, 3).join('/') || "/";
+        res.redirect(redirectUrl);
+    }
+    res.redirect("/");
 };
 
 module.exports.signupForm = (req, res) => {    
